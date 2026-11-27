@@ -1,6 +1,6 @@
 add_executable(gemm_lab
     main.cpp
-    test.cpp
+    matrix.cpp
 )
 
 target_include_directories(gemm_lab PRIVATE
