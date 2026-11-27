@@ -15,5 +15,6 @@ public:
     std::size_t size() const;
     float& operator()(std::size_t index);
     const float operator()(std::size_t index) const;
+    void fill(float fill_val);
     void test_fill();
 };

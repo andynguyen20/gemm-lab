@@ -44,6 +44,13 @@ const float Matrix::operator()(std::size_t index) const
     return data_[index];
 }
 
+void Matrix::fill(float fill_val)
+{
+    for (float& val : data_) {
+        val = fill_val;
+    }
+}
+
 void Matrix::test_fill()
 {
     float fill_val = 0;
