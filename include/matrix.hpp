@@ -10,4 +10,7 @@ private:
 public:
     Matrix(std::size_t rows, std::size_t cols);
     void print() const;
+    std::size_t rows() const;
+    std::size_t cols() const;
+    std::size_t size() const;
 };

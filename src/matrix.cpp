@@ -18,3 +18,18 @@ void Matrix::print() const
             std::cout << data_[i] << ", ";
     }
 }
+
+std::size_t Matrix::rows() const
+{
+    return rows_;
+}
+
+std::size_t Matrix::cols() const
+{
+    return cols_;
+}
+
+std::size_t Matrix::size() const
+{
+    return rows_ * cols_;
+}
