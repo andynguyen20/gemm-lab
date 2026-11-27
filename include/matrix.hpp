@@ -13,4 +13,7 @@ public:
     std::size_t rows() const;
     std::size_t cols() const;
     std::size_t size() const;
+    float& operator()(std::size_t index);
+    const float operator()(std::size_t index) const;
+    void test_fill();
 };

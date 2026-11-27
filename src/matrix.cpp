@@ -33,3 +33,22 @@ std::size_t Matrix::size() const
 {
     return rows_ * cols_;
 }
+
+float& Matrix::operator()(std::size_t index)
+{
+    return data_[index];
+}
+
+const float Matrix::operator()(std::size_t index) const
+{
+    return data_[index];
+}
+
+void Matrix::test_fill()
+{
+    float fill_val = 0;
+    for (float& val : data_) {
+        val = fill_val;
+        fill_val++;
+    }
+}
