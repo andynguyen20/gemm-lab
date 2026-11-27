@@ -1,5 +1,6 @@
 #include "matrix.hpp"
 #include <iostream>
+#include <vector>
 
 Matrix::Matrix(std::size_t rows, std::size_t cols) 
     : rows_(rows), cols_(cols), data_(rows * cols, 0)
@@ -42,6 +43,16 @@ float& Matrix::operator()(std::size_t index)
 const float Matrix::operator()(std::size_t index) const
 {
     return data_[index];
+}
+
+float* Matrix::data()
+{
+    return data_.data();
+}
+
+const float* Matrix::data() const
+{
+    return data_.data();
 }
 
 void Matrix::fill(float fill_val)
