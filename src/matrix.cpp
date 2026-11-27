@@ -1,22 +1,25 @@
 #include "matrix.hpp"
 #include <iostream>
 #include <vector>
+#include <stdexcept>
 
 Matrix::Matrix(std::size_t rows, std::size_t cols) 
     : rows_(rows), cols_(cols), data_(rows * cols, 0)
 {
-
+    if (rows == 0 || cols == 0) 
+        throw std::runtime_error{"Zero dimension matrix"};
 }
 
 void Matrix::print() const
 {
     for (std::size_t i = 0; i < rows_ * cols_; ++i) {
         if (i % cols_ == 0) 
-            std::cout << "[" << data_[i] << ", ";
-        else if (i % cols_ == cols_ - 1) 
-            std::cout << data_[i] << "]\n";
-        else
-            std::cout << data_[i] << ", ";
+            std::cout << "[";
+        std::cout << data_[i];
+        if (i % cols_ == cols_ - 1) 
+            std::cout << "]\n";
+        else 
+            std::cout << ", ";
     }
 }
 
@@ -62,11 +65,13 @@ void Matrix::fill(float fill_val)
     }
 }
 
-void Matrix::test_fill()
+void Matrix::manual_fill(std::initializer_list<float> matrix)
 {
-    float fill_val = 0;
-    for (float& val : data_) {
-        val = fill_val;
-        fill_val++;
+    if (matrix.size() != rows_ * cols_) 
+        throw std::runtime_error{"Invalid matrix size to fill"};
+
+    std::size_t count = 0;
+    for (const float& index : matrix) {
+        data_[count++] = index;
     }
 }

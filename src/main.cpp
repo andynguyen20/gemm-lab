@@ -1,14 +1,18 @@
 #include "matrix.hpp"
+#include "gemm.hpp"
 #include <iostream>
+#include <stdexcept>
 
 int main() {
-    Matrix test_matrix{3, 4};
-    test_matrix.test_fill();
-    float* matrix_ptr = test_matrix.data();
-    std::cout << matrix_ptr[0] << '\n';
-    std::cout << matrix_ptr[6] << '\n';
-    const float* const_matrix_ptr = test_matrix.data();
-    //const_matrix_ptr[0] = 10.0f;
-    matrix_ptr[0] = 10.0f;
-    test_matrix.print();
+    try {
+        Matrix matrix_a {2, 2};
+        Matrix matrix_b {2, 2};
+        matrix_a.manual_fill({1, 2, 3, 4});
+        matrix_b.manual_fill({5, 6, 7, 8});
+        Matrix matrix_c {matrix_a.rows(), matrix_b.cols()};
+        gemm::naive(matrix_a, matrix_b, matrix_c);
+        matrix_c.print();
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Error: " << e.what() << '\n';
+    }
 }

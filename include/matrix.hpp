@@ -1,6 +1,7 @@
 #pragma once 
 #include <cstddef>
 #include <vector>
+#include <initializer_list>
 
 class Matrix {
 private:
@@ -18,5 +19,5 @@ public:
     float* data();
     const float* data() const;
     void fill(float fill_val);
-    void test_fill();
+    void manual_fill(std::initializer_list<float> matrix);
 };
